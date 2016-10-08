@@ -1,3 +1,7 @@
 <h1>
-  {{title}}
+  {{title}} foo
 </h1>
+
+<ul>
+  <li *ngFor="let player of playerList">{{player.first_name}}</li>
+</ul>
