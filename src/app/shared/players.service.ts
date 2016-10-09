@@ -8,24 +8,24 @@ export class PlayersService {
   getPlayers(): Promise<Players[]>{
     return Promise.resolve(PLAYERDATA);
   }
-
 }
 
 const PLAYERDATA: Players[] = [
-  { first_name: 'Connor', last_name: 'Schuckmann', number: 5, position: 'w', line: 'yellow' },
-  { first_name: 'Ethan', last_name: 'Haas', number: 9, position: 'w', line: 'yellow' },
-  { first_name: 'Markus', last_name: 'Hanson', number: 11, position: 'c', line: 'yellow' },
-  { first_name: 'Cole', last_name: 'Agnew', number: 12, position: 'w', line: 'red' },
-  { first_name: 'Piercen', last_name: 'Garcia', number: 10, position: 'c', line: 'red' },
-  { first_name: 'Trent', last_name: 'Nesbitt', number: 8, position: 'w', line: 'red' },
-  { first_name: 'Sutter', last_name: 'Carson', number: 21, position: 'w', line: 'blue' },
-  { first_name: 'Tayz', last_name: 'Rurak', number: 19, position: 'c', line: 'blue' },
-  { first_name: 'Dylan', last_name: 'Lancial', number: 17, position: 'w', line: 'blue' },
-  { first_name: 'Sam', last_name: 'Jewett', number: 6, position: 'd', line: 'p1' },
-  { first_name: 'Solomon', last_name: 'Wells', number: 7, position: 'd', line: 'p1' },
-  { first_name: 'Kevin', last_name: 'Salewski', number: 18, position: 'd', line: 'p2' },
-  { first_name: 'Kayla', last_name: 'Hanson', number: 4, position: 'd', line: 'p2' },
-  { first_name: 'Mack', last_name: 'Ashbaugh', number: 20, position: 'd', line: 'p3' },
-  { first_name: 'Bryce', last_name: 'Robin', number: 2, position: 'd', line: 'p3' },
-
+  new Players('Connor', 'Schuckmann', 5, 'w', 'yellow'),
+  new Players('Ethan', 'Hass', 9, 'w', 'yellow'),
+  new Players('Markus', 'Hanson', 11, 'c', 'yellow'),
+  new Players( 'Cole', 'Agnew', 12, 'w', 'red'),
+  new Players( 'Piercen', 'Garcia', 10, 'c', 'red'),
+  new Players( 'Trent', 'Nesbitt', 8, 'w', 'red'),
+  new Players('Sutter', 'Carson', 21, 'w', 'blue'),
+  new Players('Tayz', 'Rurak', 19, 'c', 'blue'),
+  new Players('Dylan', 'Lancial', 17, 'w', 'blue'),
+  new Players('Sam', 'Jewett', 6, 'd', 'p1'),
+  new Players('Solomon', 'Wells', 7, 'd', 'p1'),
+  new Players('Kevin', 'Salewski', 18, 'd', 'p2'),
+  new Players('Kayla', 'Hanson', 4, 'd', 'p2'),
+  new Players('Mack', 'Ashbaugh', 20, 'd', 'p3'),
+  new Players('Bryce', 'Robin', 2, 'd', 'p3'),
+  new Players('Dylan', 'Thomas', 31, 'g', 'g'),
+  new Players('Tristan', 'Scott', 1, 'g', 'g' )
 ];

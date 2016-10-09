@@ -1,0 +1,13 @@
+
+.player-on {background-color: green;}
+.player-off {background-color: red;}
+
+ md-grid-tile {
+  transition: all 200ms ease-out 50ms; }
+
+button {
+  display: inline-block;
+  text-align: center;
+}
+
+.button-row { margin-bottom:10px; height:20%; }

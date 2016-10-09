@@ -1,7 +1,86 @@
-<h1>
-  {{title}} foo
-</h1>
 
-<ul>
-  <li *ngFor="let player of playerList">{{player.first_name}}</li>
-</ul>
+<md-toolbar>
+  Twig - Using Angular 2 Material
+</md-toolbar>
+
+<md-sidenav-layout class="right-navigation">
+  <md-sidenav #start mode="side" opened="true">
+      <div class="row" style="margin-bottom:10px;" >
+        <p align="center">Fore</p>
+      </div>
+      <div class="row" class="button-row">
+        <button class="centered" style="height:100%; width:100%"
+                (click)="recordShot(SAVE,true,false,false)">S</button>
+      </div>
+      <div class="row" class="button-row">
+        <button class="centered" style="height:100%; width:100%"
+                (click)="recordShot(BLOCK,true,false,false)">B</button>
+      </div>
+      <div class="row" class="button-row">
+        <button class="centered" style="height:100%; width:100%"
+                (click)="recordShot(MISS,true,false,false)">M</button>
+      </div>
+      <div class="row" class="button-row">
+        <button class="centered" style="height:100%; width:100%"
+                (click)="recordShot(GOAL,true,false,false)">G</button>
+      </div>
+  </md-sidenav>
+
+  <md-sidenav #end mode="side" opened="true" align="end">
+      <div class="row" style="margin-bottom:10px;" >
+        <p align="center">Against</p>
+      </div>
+      <div class="row" class="button-row">
+        <button class="centered" style="height:100%; width:100%"  (click)="recordShot(Save,false)">S</button>
+      </div>
+      <div class="row" class="button-row">
+        <button class="centered" style="height:100%; width:100%">B</button>
+      </div>
+      <div class="row" class="button-row">
+        <button class="centered" style="height:100%; width:100%">M</button>
+      </div>
+      <div class="row" class="button-row">
+        <button class="centered" style="height:100%;  width:100%">G</button>
+      </div>
+  </md-sidenav>
+
+  <md-grid-list cols="3"  md-gutter="12px">
+    <md-grid-tile [ngClass]="{'player-on':player.on_ice, 'player-off':!player.on_ice}" (click)="togglePlayerActive(player)"
+      *ngFor="let player of playerList">
+      {{player.first_name}}-{{player.number}}
+    </md-grid-tile>
+  </md-grid-list>
+
+    <vaadin-grid [items]="playerList">
+      <table>
+        <colgroup>
+          <col name="last_name">
+          <col name="number">
+          <col name="position" hidable>
+          <col name="line" hidable>
+        </colgroup>
+      </table>
+    </vaadin-grid>
+
+    <vaadin-grid>
+      <table>
+        <colgroup>
+          <col>
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let shot of getShots()">
+            <td>{{shot.id}}</td>
+            <td>{{shot.type}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </vaadin-grid>
+
+</md-sidenav-layout>
