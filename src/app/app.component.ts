@@ -1,7 +1,7 @@
 import { Component,ElementRef, OnInit } from '@angular/core';
 //import { ROUTER_DIRECTIVES } from '@angular/router';
 import { PolymerElement } from '@vaadin/angular2-polymer';
-import { Players, PlayersService, ShotType, Shots, ShotsService, PlayerShotsService } from './shared';
+import { Players, PlayersService, ShotType, Shots, ShotsService, PlayerShotsService, PlayerShots } from './shared';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +27,10 @@ export class AppComponent implements OnInit {
 
   getShots() : Shots [] {
     return this._shotservice._shots;
+  }
+
+  getPlayerShots() : PlayerShots[] {
+    return this._playershotservice.player_shots;
   }
 
   recordSave(fore: boolean) {

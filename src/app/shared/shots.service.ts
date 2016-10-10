@@ -12,9 +12,16 @@ export class ShotsService {
     return s;
   }
 
-  //getShots(): Promise<Shots[]>{
-  //  return Promise.resolve(this._shots);
-  //}
+  getShots(): Promise<Shots[]>{
+    return Promise.resolve(this._shots);
+  }
+
+  getShot(id: string): Shots {
+    for(let s of this._shots) {
+      if(id == s.id)
+        return s;
+    }
+  }
 
   _shots : Shots [];
 

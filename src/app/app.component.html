@@ -43,6 +43,72 @@
     </button>
     </div>
 
+  <div class="row">
+    <h2> where are the stats? </h2>
+    <app-player-stats></app-player-stats>
+<!--
+    <vaadin-grid [items]="playerList">
+      <table>
+        <colgroup>
+          <col name="last_name">
+          <col name="number">
+          <col name="position" hidable>
+          <col name="line" hidable>
+        </colgroup>
+      </table>
+    </vaadin-grid>
+-->
+</div>
+
+<div class="row">
+    <vaadin-grid>
+      <table>
+        <colgroup>
+          <col>
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let shot of getShots()">
+            <td>{{shot.id}}</td>
+            <td>{{shot.type}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </vaadin-grid>
+</div>
+
+
+<div class="row">
+    <vaadin-grid>
+      <table>
+        <colgroup>
+          <col>
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th>playerID</th>
+            <th>shotID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ps of getPlayerShots()">
+            <td>{{ps.playerId}}</td>
+            <td>{{ps.shotId}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </vaadin-grid>
+</div>
+
+
+
   </paper-header-panel>
 </paper-drawer-panel>
 
@@ -55,29 +121,6 @@
   </paper-dialog-scrollable>
 </paper-dialog>
 
-<!-- <paper-header-panel> -->
-<!-- <paper-header-panel class="flex -webkit-flex">-->
-  <!--
-  -->
-  <!-- Start Content -->
-
-<!--
-  <paper-toolbar id="toolbar">
-    <div>Header</div>
-    <span class="flex -webkit-flex"></span>
-    <paper-icon-button icon="search"></paper-icon-button>
-  </paper-toolbar>
-
-  <div id="grid">
-    <button class="grid-element"
-            [ngClass]="{'player-on':player.on_ice, 'player-off':!player.on_ice}"
-            (click)="togglePlayerActive(player)"
-            *ngFor="let player of playerList">
-          {{player.first_name}}-{{player.number}}
-    </button>
-  </div>
-
--->
 
 <!--
   <div class="row">

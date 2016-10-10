@@ -1,0 +1,29 @@
+<!--
+<vaadin-grid #my_table>
+  -->
+  <table>
+    <colgroup>
+      <col>
+      <col>
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Saves Fore</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stats of playerstatsList">
+        <td>{{stats.player.number}}</td>
+        <td>{{stats.player.last_name}}</td>
+        <td>{{stats.shots}}</td>
+      </tr>
+    </tbody>
+  </table>
+<!--
+
+</vaadin-grid>
+  -->
+
