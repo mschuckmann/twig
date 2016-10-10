@@ -4,7 +4,7 @@ import { PlayerShots } from './player-shots.model';
 @Injectable()
 export class PlayerShotsService {
 
-  constructor() { }
+  constructor() { this.player_shots = new Array<PlayerShots>(); }
 
   addPlayerShot(shotId: string, playerId: number) {
     this.player_shots.push(new PlayerShots(shotId, playerId));

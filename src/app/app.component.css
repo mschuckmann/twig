@@ -2,8 +2,9 @@
 .player-on {background-color: green;}
 .player-off {background-color: red;}
 
- md-grid-tile {
-  transition: all 200ms ease-out 50ms; }
+paper-button.red[active] {
+  background-color: red;
+}
 
 button {
   display: inline-block;
@@ -11,3 +12,33 @@ button {
 }
 
 .button-row { margin-bottom:10px; height:20%; }
+
+
+.clear {
+  clear: both;
+}
+
+#toolbar {
+  /*height: 5vh;*/
+}
+
+#grid {
+  display: flex;
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  height: 90vh;
+  /*width: 90%;
+  height: 100%;
+  */
+}
+
+.grid-element {
+  width: 30%;
+  height: 17%;
+  flex: 1 auto;
+  -webkit-flex: 1 auto;
+}

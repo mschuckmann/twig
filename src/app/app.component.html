@@ -1,56 +1,86 @@
 
-<md-toolbar>
-  Twig - Using Angular 2 Material
-</md-toolbar>
+<paper-drawer-panel drawer-width="100px">
+  <paper-header-panel drawer>
+    <div class="row">
+    <paper-toolbar>
+      <div>Fore</div>
+    </paper-toolbar>
+    <div>
+      <paper-button class="row" raised (click)="recordMiss(true, false, false)">Miss</paper-button>
+      <paper-button class="row" raised (click)="recordBlock(true, false, false)">Block</paper-button>
+      <paper-button class="row" raised (click)="recordSave(true, false, false)">Save</paper-button>
+      <paper-button class="row" raised (click)="recordGoal(true, false, false)">Goal</paper-button>
+    </div>
+    </div>
+    <div class="row">
 
-<md-sidenav-layout class="right-navigation">
-  <md-sidenav #start mode="side" opened="true">
-      <div class="row" style="margin-bottom:10px;" >
-        <p align="center">Fore</p>
-      </div>
-      <div class="row" class="button-row">
-        <button class="centered" style="height:100%; width:100%"
-                (click)="recordShot(SAVE,true,false,false)">S</button>
-      </div>
-      <div class="row" class="button-row">
-        <button class="centered" style="height:100%; width:100%"
-                (click)="recordShot(BLOCK,true,false,false)">B</button>
-      </div>
-      <div class="row" class="button-row">
-        <button class="centered" style="height:100%; width:100%"
-                (click)="recordShot(MISS,true,false,false)">M</button>
-      </div>
-      <div class="row" class="button-row">
-        <button class="centered" style="height:100%; width:100%"
-                (click)="recordShot(GOAL,true,false,false)">G</button>
-      </div>
-  </md-sidenav>
+    <paper-toolbar>
+      <div>Against</div>
+    </paper-toolbar>
+    <div>
+      <paper-button class="row" raised>Miss</paper-button>
+      <paper-button class="row" raised>Block</paper-button>
+      <paper-button class="row" raised>Save</paper-button>
+      <paper-button class="row" raised >Goal</paper-button>
+    </div>
+</div>
+  </paper-header-panel>
+  <paper-header-panel main>
+    <paper-toolbar>
+      <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+      <div>Twig</div>
 
-  <md-sidenav #end mode="side" opened="true" align="end">
-      <div class="row" style="margin-bottom:10px;" >
-        <p align="center">Against</p>
-      </div>
-      <div class="row" class="button-row">
-        <button class="centered" style="height:100%; width:100%"  (click)="recordShot(Save,false)">S</button>
-      </div>
-      <div class="row" class="button-row">
-        <button class="centered" style="height:100%; width:100%">B</button>
-      </div>
-      <div class="row" class="button-row">
-        <button class="centered" style="height:100%; width:100%">M</button>
-      </div>
-      <div class="row" class="button-row">
-        <button class="centered" style="height:100%;  width:100%">G</button>
-      </div>
-  </md-sidenav>
+      <paper-button noink toggles raised class="red"> Power Play </paper-button>
+      <paper-button noink toggles raised class="red"> Short Handed </paper-button>
 
-  <md-grid-list cols="3"  md-gutter="12px">
-    <md-grid-tile [ngClass]="{'player-on':player.on_ice, 'player-off':!player.on_ice}" (click)="togglePlayerActive(player)"
-      *ngFor="let player of playerList">
-      {{player.first_name}}-{{player.number}}
-    </md-grid-tile>
-  </md-grid-list>
 
+    </paper-toolbar>
+    <!-- Main Content -->
+    <div id="grid">
+      <button class="grid-element" [ngClass]="{'player-on':player.on_ice, 'player-off':!player.on_ice}" (click)="togglePlayerActive(player)"
+        *ngFor="let player of playerList">
+          {{player.first_name}}-{{player.number}}
+    </button>
+    </div>
+
+  </paper-header-panel>
+</paper-drawer-panel>
+
+
+<paper-dialog id="alignedDialog" no-overlap horizontal-align="left" vertical-align="top">
+  <h2>Aligned dialog</h2>
+  <paper-dialog-scrollable>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </paper-dialog-scrollable>
+</paper-dialog>
+
+<!-- <paper-header-panel> -->
+<!-- <paper-header-panel class="flex -webkit-flex">-->
+  <!--
+  -->
+  <!-- Start Content -->
+
+<!--
+  <paper-toolbar id="toolbar">
+    <div>Header</div>
+    <span class="flex -webkit-flex"></span>
+    <paper-icon-button icon="search"></paper-icon-button>
+  </paper-toolbar>
+
+  <div id="grid">
+    <button class="grid-element"
+            [ngClass]="{'player-on':player.on_ice, 'player-off':!player.on_ice}"
+            (click)="togglePlayerActive(player)"
+            *ngFor="let player of playerList">
+          {{player.first_name}}-{{player.number}}
+    </button>
+  </div>
+
+-->
+
+<!--
+  <div class="row">
     <vaadin-grid [items]="playerList">
       <table>
         <colgroup>
@@ -82,5 +112,7 @@
         </tbody>
       </table>
     </vaadin-grid>
+  </div>
+-->
 
-</md-sidenav-layout>
+<!-- </paper-header-panel>-->

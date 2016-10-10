@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component,ElementRef, OnInit } from '@angular/core';
+//import { ROUTER_DIRECTIVES } from '@angular/router';
+import { PolymerElement } from '@vaadin/angular2-polymer';
 import { Players, PlayersService, ShotType, Shots, ShotsService, PlayerShotsService } from './shared';
 
 @Component({
@@ -28,6 +29,22 @@ export class AppComponent implements OnInit {
     return this._shotservice._shots;
   }
 
+  recordSave(fore: boolean) {
+    this.recordShot( ShotType.SAVE, fore, false, false);
+  }
+
+  recordMiss(fore: boolean) {
+    this.recordShot( ShotType.MISS, fore, false, false);
+  }
+
+  recordBlock(fore: boolean) {
+    this.recordShot( ShotType.BLOCK, fore, false, false);
+  }
+
+  recordGoal(fore: boolean) {
+    this.recordShot( ShotType.GOAL, fore, false, false);
+  }
+
   recordShot(type: ShotType,
              fore: boolean,
              powerPlay: boolean,
@@ -52,7 +69,15 @@ export class AppComponent implements OnInit {
         this._playershotservice.addPlayerShot(aShot.id, p.number);
       }
     }
-  }
+
+    if(type == ShotType.GOAL && fore) {
+      var alignedDialog :any = document.getElementById('alignedDialog');
+      if( alignedDialog ) {
+        alignedDialog.open();
+      }
+    }
+  } //end recordShot()
+
 }
 
 
