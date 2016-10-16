@@ -3,6 +3,10 @@ export enum ShotType {
   GOAL, SAVE, MISS, BLOCK
 }
 
+export enum GoalType {
+  EVEN, POWER_PLAY, SHORT_HANDED, NO_GOAL
+}
+
 class Guid {
     static newGuid() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -16,8 +20,7 @@ export class Shots {
   id : string;
   type : ShotType;
   shotFore: boolean;
-  powerPlay: boolean;
-  shortHanded: boolean;
+  goalType : GoalType;
   shooterPlayerId: number;
   assist1PlayerId: number;
   assist2PlayerId: number;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataTableModule} from "angular2-datatable";
 import { Players, PlayersService, ShotType, Shots, ShotsService, PlayerShotsService, PlayerShots, PlayerStats, PlayerStatsService } from '../shared';
-
+import { IsSkaterPipe } from "../is-skater.pipe";
 
 @Component({
   selector: 'app-player-stats',
@@ -9,11 +9,6 @@ import { Players, PlayersService, ShotType, Shots, ShotsService, PlayerShotsServ
   styleUrls: ['./player-stats.component.css']
 })
 export class PlayerStatsComponent implements OnInit {
-
-  grid = document.querySelector("angular-grid vaadin-grid");
-//  playerList: Players[] = [];
-//  playershotList: PlayerShots[] = [];
-//  shotsList: Shots[] = [];
   playerstatsList: PlayerStats[] = [];
 
   constructor(
@@ -30,7 +25,6 @@ export class PlayerStatsComponent implements OnInit {
     this.playerstatsList = this._playerstatsservice.getPlayerStats();
 
     this._playerstatsservice.playerShotsUpdated.subscribe( (stats) => {
-//      this.grid.
     });
   }
 

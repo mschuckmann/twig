@@ -1,7 +1,8 @@
-import { Component,ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 //import { ROUTER_DIRECTIVES } from '@angular/router';
 import { PolymerElement } from '@vaadin/angular2-polymer';
-import { Players, PlayersService, ShotType, Shots, ShotsService, PlayerShotsService, PlayerShots } from './shared';
+import { Players, PlayersService, ShotType, Shots, ShotsService, PlayerShotsService, PlayerShots, GoalType} from './shared';
+import { GoalDialogComponent } from './goal-dialog/goal-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,9 @@ import { Players, PlayersService, ShotType, Shots, ShotsService, PlayerShotsServ
 export class AppComponent implements OnInit {
   title = 'Twig';
   playerList: Players[] = [];
+
+  @ViewChild(GoalDialogComponent)
+  goalDialog: GoalDialogComponent;
 
   constructor(
     private _playerservice: PlayersService,
@@ -34,53 +38,54 @@ export class AppComponent implements OnInit {
   }
 
   recordSave(fore: boolean) {
-    this.recordShot( ShotType.SAVE, fore, false, false);
+    this.recordShot(ShotType.SAVE, fore);
   }
 
   recordMiss(fore: boolean) {
-    this.recordShot( ShotType.MISS, fore, false, false);
+    this.recordShot(ShotType.MISS, fore);
   }
 
   recordBlock(fore: boolean) {
-    this.recordShot( ShotType.BLOCK, fore, false, false);
+    this.recordShot(ShotType.BLOCK, fore);
   }
 
   recordGoal(fore: boolean) {
-    this.recordShot( ShotType.GOAL, fore, false, false);
+    this.recordShot(ShotType.GOAL, fore);
   }
 
   recordShot(type: ShotType,
-             fore: boolean,
-             powerPlay: boolean,
-             shortHanded: boolean,
-             shooter?: number,
-             assist1?: number,
-             assist2?: number ) {
-    var aShot = this._shotservice.newShot();
-    aShot.type = type;
-    aShot.powerPlay = powerPlay;
-    aShot.shortHanded = shortHanded;
-    aShot.shotFore = fore;
-    if(shooter)
-      aShot.shooterPlayerId = shooter;
-    if(assist1)
-      aShot.assist1PlayerId = assist1;
-    if(assist2)
-      aShot.assist2PlayerId = assist2;
+             fore: boolean ) {
+
+    if(type == ShotType.GOAL && fore) {
+      if( this.goalDialog ) {
+        this.goalDialog.open();
+      }
+    } else {
+      var aShot = this._shotservice.newShot();
+      aShot.type = type;
+      if(type == ShotType.GOAL)
+        aShot.goalType = GoalType.EVEN;
+      else
+        aShot.goalType = GoalType.NO_GOAL;
+      aShot.shotFore = fore;
+
+      for (let p of this.playerList) {
+        if(p.on_ice) {
+          this._playershotservice.addPlayerShot(aShot.id, p.number);
+        }
+      }
+    }
+  } //end recordShot()
+
+  onGoalConfirmed(aShot : Shots) {
+    console.log("goal confirmed");
 
     for (let p of this.playerList) {
       if(p.on_ice) {
         this._playershotservice.addPlayerShot(aShot.id, p.number);
       }
     }
-
-    if(type == ShotType.GOAL && fore) {
-      var alignedDialog :any = document.getElementById('alignedDialog');
-      if( alignedDialog ) {
-        alignedDialog.open();
-      }
-    }
-  } //end recordShot()
+  }
 
 }
 

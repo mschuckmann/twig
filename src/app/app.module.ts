@@ -13,13 +13,23 @@ import { PlayerStatsService } from './shared';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
 import { PlayerStatsComponent } from './player-stats/player-stats.component';
+import { GoalDialogComponent } from './goal-dialog/goal-dialog.component';
+import { IsSkaterPipe } from './is-skater.pipe';
+import { PositionPipe } from './position.pipe';
+import { OnTheIcePipe } from './on-the-ice.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
     PolymerElement('vaadin-grid'),
-    PlayerStatsComponent
+    PolymerElement('paper-dropdown-menu'),
+    PolymerElement('paper-listbox'),
+    PlayerStatsComponent,
+    GoalDialogComponent,
+    IsSkaterPipe,
+    PositionPipe,
+    OnTheIcePipe
   ],
   imports: [
     BrowserModule,

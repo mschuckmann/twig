@@ -1,0 +1,31 @@
+<paper-dialog
+    #paperDialog
+    modal="true"
+    (iron-overlay-closed)="onClose($event)"
+    >
+  <h2>Goal Details</h2>
+  <!--<paper-dialog-scrollable>-->
+
+    <paper-dropdown-menu label="Goal">
+      <paper-listbox class="dropdown-content" [(selected)]="goalScorer" attr-for-selected="playerId" >
+         <paper-item *ngFor="let player of playerList | onTheIce" playerId="{{player.number}}">#{{player.number}}-{{player.first_name}}</paper-item>
+      </paper-listbox>
+     </paper-dropdown-menu>
+
+    <paper-dropdown-menu label="1st Assist">
+      <paper-listbox class="dropdown-content" [(selected)]="assist1" attr-for-selected="playerId">
+         <paper-item *ngFor="let player of playerList  | onTheIce" playerId="{{player.number}}">#{{player.number}}-{{player.first_name}}</paper-item>
+      </paper-listbox>
+    </paper-dropdown-menu>
+
+    <paper-dropdown-menu label="2st Assist">
+      <paper-listbox class="dropdown-content" [(selected)]="assist2" attr-for-selected="playerId">
+         <paper-item *ngFor="let player of playerList | onTheIce" playerId="{{player.number}}">#{{player.number}}-{{player.first_name}}</paper-item>
+      </paper-listbox>
+    </paper-dropdown-menu>
+  <!--</paper-dialog-scrollable>-->
+  <div class="buttons">
+    <paper-button dialog-dismiss>Cancel</paper-button>
+    <paper-button dialog-confirm autofocus>Accept</paper-button>
+  </div>
+</paper-dialog>

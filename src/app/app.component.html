@@ -6,10 +6,10 @@
       <div>Fore</div>
     </paper-toolbar>
     <div>
-      <paper-button class="row" raised (click)="recordMiss(true, false, false)">Miss</paper-button>
-      <paper-button class="row" raised (click)="recordBlock(true, false, false)">Block</paper-button>
-      <paper-button class="row" raised (click)="recordSave(true, false, false)">Save</paper-button>
-      <paper-button class="row" raised (click)="recordGoal(true, false, false)">Goal</paper-button>
+      <paper-button class="row" raised (click)="recordMiss(true)" >Miss</paper-button>
+      <paper-button class="row" raised (click)="recordBlock(true)">Block</paper-button>
+      <paper-button class="row" raised (click)="recordSave(true)" >Save</paper-button>
+      <paper-button class="row" raised (click)="recordGoal(true)" >Goal</paper-button>
     </div>
     </div>
     <div class="row">
@@ -18,10 +18,10 @@
       <div>Against</div>
     </paper-toolbar>
     <div>
-      <paper-button class="row" raised>Miss</paper-button>
-      <paper-button class="row" raised>Block</paper-button>
-      <paper-button class="row" raised>Save</paper-button>
-      <paper-button class="row" raised >Goal</paper-button>
+      <paper-button class="row" raised (click)="recordMiss(false)" >Miss</paper-button>
+      <paper-button class="row" raised (click)="recordBlock(false)">Block</paper-button>
+      <paper-button class="row" raised (click)="recordSave(false)" >Save</paper-button>
+      <paper-button class="row" raised (click)="recordGoal(false)" >Goal</paper-button>
     </div>
 </div>
   </paper-header-panel>
@@ -30,8 +30,8 @@
       <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
       <div>Twig</div>
 
-      <paper-button noink toggles raised class="red"> Power Play </paper-button>
-      <paper-button noink toggles raised class="red"> Short Handed </paper-button>
+      <paper-button noink toggles raised class="red"> PP </paper-button>
+      <paper-button noink toggles raised class="red"> SH </paper-button>
 
 
     </paper-toolbar>
@@ -43,23 +43,12 @@
     </button>
     </div>
 
+  <br/>
   <div class="row">
-    <h2> where are the stats? </h2>
     <app-player-stats></app-player-stats>
-<!--
-    <vaadin-grid [items]="playerList">
-      <table>
-        <colgroup>
-          <col name="last_name">
-          <col name="number">
-          <col name="position" hidable>
-          <col name="line" hidable>
-        </colgroup>
-      </table>
-    </vaadin-grid>
--->
-</div>
+  </div>
 
+<!--
 <div class="row">
     <vaadin-grid>
       <table>
@@ -106,21 +95,21 @@
       </table>
     </vaadin-grid>
 </div>
-
+-->
 
 
   </paper-header-panel>
 </paper-drawer-panel>
 
-
-<paper-dialog id="alignedDialog" no-overlap horizontal-align="left" vertical-align="top">
-  <h2>Aligned dialog</h2>
-  <paper-dialog-scrollable>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </paper-dialog-scrollable>
-</paper-dialog>
-
+<!--<paper-dialog
+    id="goalDialog"
+    no-overlap horizontal-align="left"
+    vertical-align="top"
+    modal="true"
+    (iron-overlay-closed)="_goalDialogClosed($event)"
+    >-->
+  <app-goal-dialog (confirmed)='onGoalConfirmed($event)'></app-goal-dialog>
+<!--</paper-dialog>-->
 
 <!--
   <div class="row">
