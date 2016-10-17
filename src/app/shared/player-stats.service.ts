@@ -3,7 +3,7 @@ import { PlayerStats } from './player-stats.model';
 import { PlayersService } from './players.service';
 import { ShotsService } from './shots.service';
 import { PlayerShotsService } from './player-shots.service';
-import { Players, ShotType, Shots, PlayerShots } from '.';
+import { Players, ShotType, Shots, PlayerShots, ForeAgainst } from '.';
 
 @Injectable()
 export class PlayerStatsService {
@@ -40,13 +40,15 @@ export class PlayerStatsService {
     for(let playerStats of this.playerStatsList) {
         if(playerStats.player.number == ps.playerId) {
           let shot = this._shotservice.getShot(ps.shotId);
-          let goal = ((shot.type == ShotType.GOAL) && shot.shotFore &&
+          let goal = ((shot.type == ShotType.GOAL) &&
+              (shot.fore == ForeAgainst.FORE) &&
               (shot.shooterPlayerId == playerStats.player.number));
-          let assist = ((shot.type == ShotType.GOAL) && shot.shotFore &&
+          let assist = ((shot.type == ShotType.GOAL) &&
+              (shot.fore == ForeAgainst.FORE) &&
               ((shot.assist1PlayerId == playerStats.player.number) ||
               (shot.assist2PlayerId == playerStats.player.number)));
 
-          playerStats.updateShots(shot.type, shot.shotFore, goal, assist);
+          playerStats.updateShots(shot.type, shot.fore, shot.strength, goal, assist);
         }
         //Let others know the players stats table has been updated.
         this.playerShotsUpdated.emit(playerStats);

@@ -1,7 +1,37 @@
 
-<!-- <vaadin-grid #my_table> -->
+<!--<vaadin-grid #playerStats >-->
   <table>
     <colgroup>
+      <col>
+      <col>
+
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+
       <col>
       <col>
       <col>
@@ -9,20 +39,45 @@
     <thead>
       <tr>
         <th colspan="2"></th>
-        <th colspan="4">Fore</th>
-        <th colspan="4">Against</th>
+        <th align="center" colspan="4">Fore E</th>
+        <th align="center" colspan="4">Against E</th>
+
+        <th align="center" colspan="4">Fore PP</th>
+        <th align="center" colspan="4">Against PP</th>
+
+        <th align="center" colspan="4">Fore SH</th>
+        <th align="center" colspan="4">Against SH</th>
       </tr>
       <tr>
         <th>#</th>
         <th>Name</th>
-        <th>Saves</th>
-        <th>Goals</th>
-        <th>Misses</th>
-        <th>Blocks</th>
-        <th>Saves</th>
-        <th>Goals</th>
-        <th>Misses</th>
-        <th>Blocks</th>
+        <th>S</th>
+        <th>G</th>
+        <th>M</th>
+        <th>B</th>
+        <th>S</th>
+        <th>G</th>
+        <th>M</th>
+        <th>B</th>
+
+        <th>S</th>
+        <th>G</th>
+        <th>M</th>
+        <th>B</th>
+        <th>S</th>
+        <th>G</th>
+        <th>M</th>
+        <th>B</th>
+
+        <th>S</th>
+        <th>G</th>
+        <th>M</th>
+        <th>B</th>
+        <th>S</th>
+        <th>G</th>
+        <th>M</th>
+        <th>B</th>
+
         <th>Corsi</th>
         <th>Goals Scored</th>
         <th>Assists</th>
@@ -32,19 +87,38 @@
       <tr *ngFor="let stats of playerstatsList | position:'wcd' ">
         <td align="left">{{stats.player.number}}</td>
         <td align="left">{{stats.player.last_name}}</td>
-        <td align="center">{{stats.savesFore()}}</td>
-        <td align="center">{{stats.goalsFore()}}</td>
-        <td align="center">{{stats.missesFore()}}</td>
-        <td align="center">{{stats.blocksFore()}}</td>
-        <td align="center">{{stats.savesAgainst()}}</td>
-        <td align="center">{{stats.goalsAgainst()}}</td>
-        <td align="center">{{stats.missesAgainst()}}</td>
-        <td align="center">{{stats.blocksAgainst()}}</td>
+        <td align="center">{{stats.shotStat(ShotType.SAVE,  ForeAgainst.FORE,    Strength.EVEN)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.GOAL,  ForeAgainst.FORE,    Strength.EVEN)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.MISS,  ForeAgainst.FORE,    Strength.EVEN)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.BLOCK, ForeAgainst.FORE,    Strength.EVEN)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.SAVE,  ForeAgainst.AGAINST, Strength.EVEN)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.GOAL,  ForeAgainst.AGAINST, Strength.EVEN)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.MISS,  ForeAgainst.AGAINST, Strength.EVEN)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.BLOCK, ForeAgainst.AGAINST, Strength.EVEN)}}</td>
+
+        <td align="center">{{stats.shotStat(ShotType.SAVE,  ForeAgainst.FORE,    Strength.POWER_PLAY)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.GOAL,  ForeAgainst.FORE,    Strength.POWER_PLAY)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.MISS,  ForeAgainst.FORE,    Strength.POWER_PLAY)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.BLOCK, ForeAgainst.FORE,    Strength.POWER_PLAY)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.SAVE,  ForeAgainst.AGAINST, Strength.POWER_PLAY)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.GOAL,  ForeAgainst.AGAINST, Strength.POWER_PLAY)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.MISS,  ForeAgainst.AGAINST, Strength.POWER_PLAY)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.BLOCK, ForeAgainst.AGAINST, Strength.POWER_PLAY)}}</td>
+
+        <td align="center">{{stats.shotStat(ShotType.SAVE,  ForeAgainst.FORE,    Strength.SHORT_HANDED)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.GOAL,  ForeAgainst.FORE,    Strength.SHORT_HANDED)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.MISS,  ForeAgainst.FORE,    Strength.SHORT_HANDED)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.BLOCK, ForeAgainst.FORE,    Strength.SHORT_HANDED)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.SAVE,  ForeAgainst.AGAINST, Strength.SHORT_HANDED)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.GOAL,  ForeAgainst.AGAINST, Strength.SHORT_HANDED)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.MISS,  ForeAgainst.AGAINST, Strength.SHORT_HANDED)}}</td>
+        <td align="center">{{stats.shotStat(ShotType.BLOCK, ForeAgainst.AGAINST, Strength.SHORT_HANDED)}}</td>
+
         <td align="center">{{stats.corsi()}}</td>
         <td align="center">{{stats.goalsScored()}}</td>
         <td align="center">{{stats.assists()}}</td>
       </tr>
     </tbody>
   </table>
-<!-- </vaadin-grid> -->
+<!--</vaadin-grid>-->
 

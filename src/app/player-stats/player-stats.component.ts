@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { PolymerElement } from '@vaadin/angular2-polymer';
 import {DataTableModule} from "angular2-datatable";
-import { Players, PlayersService, ShotType, Shots, ShotsService, PlayerShotsService, PlayerShots, PlayerStats, PlayerStatsService } from '../shared';
+import { Players, PlayersService, ShotType, Shots, ShotsService,
+         PlayerShotsService, PlayerShots, PlayerStats, PlayerStatsService, Strength, ForeAgainst } from '../shared';
 import { IsSkaterPipe } from "../is-skater.pipe";
 
 @Component({
@@ -8,43 +10,26 @@ import { IsSkaterPipe } from "../is-skater.pipe";
   templateUrl: './player-stats.component.html',
   styleUrls: ['./player-stats.component.css']
 })
-export class PlayerStatsComponent implements OnInit {
+export class PlayerStatsComponent implements OnInit, AfterViewInit {
   playerstatsList: PlayerStats[] = [];
 
+  public ShotType = ShotType;
+  public ForeAgainst = ForeAgainst;
+  public Strength = Strength;
+
   constructor(
-//    private _playerservice: PlayersService,
-//    private _shotservice: ShotsService,
-//    private _playershotservice: PlayerShotsService
       private _playerstatsservice: PlayerStatsService
       ) {}
 
   ngOnInit() {
-//    this._playerservice.getPlayers().then(players => this.playerList = players);
-    //this._playershotservice.getPlayerShots().then(ps => this.playershotList = ps);
-    //this._shotservice.getShots().then(s => this.shotsList = s);
     this.playerstatsList = this._playerstatsservice.getPlayerStats();
 
     this._playerstatsservice.playerShotsUpdated.subscribe( (stats) => {
     });
   }
 
-
-/*
-  getPlayerSavesFore( playerId: number ): number {
-    var count = 10;
-    console.log( "calcualting savesFore" );
-    for( let sp of this._playershotservice.player_shots) {
-      //console.log( "playerShot.playerId: " + sp.playerId);
-      if(sp.playerId == playerId) {
-        let s = this._shotservice.getShot(sp.shotId);
-        //console.log( "shot.shotFore: " + s.shotFore );
-        if(s.shotFore)
-          ++count;
-          //console.log( "count: " + count );
-      }
-    }
-    console.log( "count: " + count );
-    return count;
+  ngAfterViewInit() {
   }
-*/
+
+
 }

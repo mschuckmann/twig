@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit, AfterViewInit, EventEmitter, Output, ElementRef } from '@angular/core';
-import { Players, PlayersService, ShotType, Shots, ShotsService, PlayerShotsService, PlayerShots, PlayerStats, PlayerStatsService } from '../shared';
+import { Players, PlayersService, ShotType, Shots, ShotsService, PlayerShotsService, PlayerShots, PlayerStats, PlayerStatsService, ForeAgainst } from '../shared';
 import { PolymerElement } from '@vaadin/angular2-polymer';
 
 @Component({
@@ -41,7 +41,7 @@ export class GoalDialogComponent implements OnInit{
     if( event.detail.confirmed ) {
       console.log("goalDialog confirmed: ");
       var aShot = this._shotservice.newShot();
-      aShot.shotFore = true;
+      aShot.fore = ForeAgainst.FORE;
       aShot.type = ShotType.GOAL;
 
       console.log("Goal Scorer: " + this.goalScorer );

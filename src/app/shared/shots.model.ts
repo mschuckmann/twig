@@ -3,8 +3,12 @@ export enum ShotType {
   GOAL, SAVE, MISS, BLOCK
 }
 
-export enum GoalType {
-  EVEN, POWER_PLAY, SHORT_HANDED, NO_GOAL
+export enum Strength {
+  EVEN, POWER_PLAY, SHORT_HANDED
+}
+
+export enum ForeAgainst {
+  FORE, AGAINST
 }
 
 class Guid {
@@ -19,8 +23,8 @@ class Guid {
 export class Shots {
   id : string;
   type : ShotType;
-  shotFore: boolean;
-  goalType : GoalType;
+  fore: ForeAgainst;
+  strength : Strength;
   shooterPlayerId: number;
   assist1PlayerId: number;
   assist2PlayerId: number;

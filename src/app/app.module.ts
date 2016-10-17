@@ -9,6 +9,7 @@ import { PlayersService } from './shared';
 import { ShotsService } from './shared';
 import { PlayerShotsService } from './shared';
 import { PlayerStatsService } from './shared';
+import { WindowRefService } from './shared';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
@@ -25,6 +26,7 @@ import { OnTheIcePipe } from './on-the-ice.pipe';
     PolymerElement('vaadin-grid'),
     PolymerElement('paper-dropdown-menu'),
     PolymerElement('paper-listbox'),
+    PolymerElement('paper-button'),
     PlayerStatsComponent,
     GoalDialogComponent,
     IsSkaterPipe,
@@ -39,7 +41,11 @@ import { OnTheIcePipe } from './on-the-ice.pipe';
     MaterialModule.forRoot()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [PlayersService, ShotsService, PlayerShotsService, PlayerStatsService],
+  providers: [PlayersService,
+              ShotsService,
+              PlayerShotsService,
+              PlayerStatsService,
+              WindowRefService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

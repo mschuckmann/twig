@@ -6,3 +6,4 @@ export * from './player-shots.model';
 export * from './player-shots.service';
 export * from './player-stats.model';
 export * from './player-stats.service';
+export * from './window-ref.service';

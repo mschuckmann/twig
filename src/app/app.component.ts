@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 //import { ROUTER_DIRECTIVES } from '@angular/router';
 import { PolymerElement } from '@vaadin/angular2-polymer';
-import { Players, PlayersService, ShotType, Shots, ShotsService, PlayerShotsService, PlayerShots, GoalType} from './shared';
+import { Players, PlayersService, ShotType, Shots, ShotsService,
+         PlayerShotsService, PlayerShots, ForeAgainst, Strength,
+         WindowRefService } from './shared';
 import { GoalDialogComponent } from './goal-dialog/goal-dialog.component';
 
 @Component({
@@ -16,13 +18,19 @@ export class AppComponent implements OnInit {
   @ViewChild(GoalDialogComponent)
   goalDialog: GoalDialogComponent;
 
+  onPP : any;
+  onSH : any;
+
   constructor(
     private _playerservice: PlayersService,
     private _shotservice: ShotsService,
-    private _playershotservice: PlayerShotsService) {}
+    private _playershotservice: PlayerShotsService,
+    private winRef : WindowRefService ) {}
 
   ngOnInit() {
     this._playerservice.getPlayers().then(players => this.playerList = players);
+    this.onPP = false;
+    this.onSH = false;
   }
 
   togglePlayerActive(selplayer) {
@@ -37,24 +45,24 @@ export class AppComponent implements OnInit {
     return this._playershotservice.player_shots;
   }
 
-  recordSave(fore: boolean) {
+  recordSave(fore: ForeAgainst) {
     this.recordShot(ShotType.SAVE, fore);
   }
 
-  recordMiss(fore: boolean) {
+  recordMiss(fore: ForeAgainst) {
     this.recordShot(ShotType.MISS, fore);
   }
 
-  recordBlock(fore: boolean) {
+  recordBlock(fore: ForeAgainst) {
     this.recordShot(ShotType.BLOCK, fore);
   }
 
-  recordGoal(fore: boolean) {
+  recordGoal(fore: ForeAgainst) {
     this.recordShot(ShotType.GOAL, fore);
   }
 
   recordShot(type: ShotType,
-             fore: boolean ) {
+             fore: ForeAgainst ) {
 
     if(type == ShotType.GOAL && fore) {
       if( this.goalDialog ) {
@@ -63,11 +71,13 @@ export class AppComponent implements OnInit {
     } else {
       var aShot = this._shotservice.newShot();
       aShot.type = type;
-      if(type == ShotType.GOAL)
-        aShot.goalType = GoalType.EVEN;
+      if(this.onPP)
+        aShot.strength = Strength.POWER_PLAY;
+      else if(this.onSH)
+        aShot.strength = Strength.SHORT_HANDED;
       else
-        aShot.goalType = GoalType.NO_GOAL;
-      aShot.shotFore = fore;
+        aShot.strength = Strength.EVEN;
+      aShot.fore = fore;
 
       for (let p of this.playerList) {
         if(p.on_ice) {
@@ -78,7 +88,7 @@ export class AppComponent implements OnInit {
   } //end recordShot()
 
   onGoalConfirmed(aShot : Shots) {
-    console.log("goal confirmed");
+    //console.log("goal confirmed");
 
     for (let p of this.playerList) {
       if(p.on_ice) {
@@ -87,6 +97,9 @@ export class AppComponent implements OnInit {
     }
   }
 
+  eMailData() {
+    this.winRef.nativeWindow.open('mailto:matt@schuckmannacres.com?subject=subject&body=body');
+  }
 }
 
 
