@@ -44,11 +44,20 @@
 
     </paper-toolbar>
     <!-- Main Content -->
-    <div id="grid">
+    <!--<div id="grid">
       <button class="grid-element" [ngClass]="{'player-on':player.on_ice, 'player-off':!player.on_ice}" (click)="togglePlayerActive(player)"
         *ngFor="let player of playerList">
           {{player.first_name}}-{{player.number}}
-    </button>
+      </button>
+    </div>-->
+    <div id="grid">
+      <button class="grid-element"
+             (click)="togglePlayerActive(player.$key)"
+             [style.background-color]="isPlayerActive(player.$key) ? 'red' : 'green'"
+             *ngFor="let player of items | async">
+        <font size="10">{{player.number}}</font><br/>
+        {{player.first_name}}
+      </button>
     </div>
 
   <br/>
@@ -56,8 +65,12 @@
     <app-player-stats></app-player-stats>
   </div>
 
-
-<div class="row">
+  <ul>
+  <li class="text" *ngFor="let item of items | async">
+    {{item.first_name}}
+  </li>
+</ul>
+<!--<div class="row">
     <vaadin-grid>
       <table>
         <colgroup>
@@ -78,7 +91,7 @@
         </tbody>
       </table>
     </vaadin-grid>
-</div>
+</div>-->
 
 <!--
 <div class="row">

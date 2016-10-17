@@ -1,10 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 //import { ROUTER_DIRECTIVES } from '@angular/router';
 import { PolymerElement } from '@vaadin/angular2-polymer';
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { Players, PlayersService, ShotType, Shots, ShotsService,
          PlayerShotsService, PlayerShots, ForeAgainst, Strength,
          WindowRefService } from './shared';
 import { GoalDialogComponent } from './goal-dialog/goal-dialog.component';
+
 
 @Component({
   selector: 'app-root',
@@ -15,17 +17,26 @@ export class AppComponent implements OnInit {
   title = 'Twig';
   playerList: Players[] = [];
 
+  playersActive: string[] = [];
+
   @ViewChild(GoalDialogComponent)
   goalDialog: GoalDialogComponent;
 
   onPP : any;
   onSH : any;
 
+  items: FirebaseListObservable<any[]>;
+  //items: FirebaseObjectObservable<any[]>;
+
   constructor(
     private _playerservice: PlayersService,
     private _shotservice: ShotsService,
     private _playershotservice: PlayerShotsService,
-    private winRef : WindowRefService ) {}
+    private winRef : WindowRefService,
+    af: AngularFire ) {
+      this.items = af.database.list('players');
+      //this.items = af.database.object('/players');
+    }
 
   ngOnInit() {
     this._playerservice.getPlayers().then(players => this.playerList = players);
@@ -34,7 +45,18 @@ export class AppComponent implements OnInit {
   }
 
   togglePlayerActive(selplayer) {
-    selplayer.on_ice = !selplayer.on_ice;
+    let found = this.playersActive.indexOf(selplayer);
+    if( -1 == found ) {
+      console.log( "Activating player " + selplayer );
+      this.playersActive.push(selplayer);
+    } else {
+      console.log( "Dectivating player " + selplayer );
+      this.playersActive.splice(found, 1);
+    }
+  }
+
+  isPlayerActive(selplayer) {
+    return -1 == this.playersActive.indexOf(selplayer);
   }
 
   getShots() : Shots [] {

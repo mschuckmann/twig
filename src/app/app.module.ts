@@ -2,14 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { DataTableModule} from "angular2-datatable";
-import { MaterialModule } from '@angular/material';
 import { PolymerElement } from '@vaadin/angular2-polymer';
 import { PlayersService } from './shared';
 import { ShotsService } from './shared';
 import { PlayerShotsService } from './shared';
 import { PlayerStatsService } from './shared';
 import { WindowRefService } from './shared';
+import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
@@ -18,6 +17,16 @@ import { GoalDialogComponent } from './goal-dialog/goal-dialog.component';
 import { IsSkaterPipe } from './is-skater.pipe';
 import { PositionPipe } from './position.pipe';
 import { OnTheIcePipe } from './on-the-ice.pipe';
+
+
+// Must export the config
+export const firebaseConfig = {
+  apiKey: 'AIzaSyBF4zUizwH3-1LaM6h6qY8lxdl6RYNVdbo',
+  authDomain: 'twig-341a2.firebaseapp.com',
+  databaseURL: 'https://twig-341a2.firebaseio.com/',
+  storageBucket: "twig-341a2.appspot.com",
+  messagingSenderId: "447518405206"
+};
 
 @NgModule({
   declarations: [
@@ -35,10 +44,9 @@ import { OnTheIcePipe } from './on-the-ice.pipe';
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     FormsModule,
-    HttpModule,
-    DataTableModule,
-    MaterialModule.forRoot()
+    HttpModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [PlayersService,

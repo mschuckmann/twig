@@ -1,0 +1,199 @@
+{
+  "players": {
+    "ab8b78cb-b890-4fb9-aa14-43a3b99a448b": {
+      "first_name": "Connor",
+      "last_name": "Schuckmann",
+      "number": 5,
+      "position": "w",
+      "line": "yellow",
+      "shots": {
+        "3b07125f-e405-494c-af15-969326466475" : true
+      }
+    },
+    "78193fc6-7204-447f-80ef-b3a973abe8ff": {
+      "first_name": "Ethan",
+      "last_name": "Hass",
+      "number": 9,
+      "position": "w",
+      "line": "yellow",
+      "shots": {
+      }
+    },
+    "b28996d6-7279-4b3c-a0aa-81a9181ebf2c": {
+      "first_name": "Markus",
+      "last_name": "Hanson",
+      "number": 11,
+      "position": "c",
+      "line": "yellow",
+      "shots": {
+      }
+    },
+    "604355aa-2454-4512-9c47-d894f7ad5719": {
+      "first_name": "Cole",
+      "last_name": "Agnew",
+      "number": 12,
+      "position": "w",
+      "line": "red",
+      "shots": {
+      }
+    },
+    "10654902-416a-44e9-8c76-5369bdec5235": {
+      "first_name": "Piercen",
+      "last_name": "Garcia",
+      "number": 10,
+      "position": "c",
+      "line": "red",
+      "shots": {
+      }
+    },
+    "d242f119-890b-44ba-b113-3b219a47ab68": {
+      "first_name": "Trent",
+      "last_name": "Nesbitt",
+      "number": 8,
+      "position": "w",
+      "line": "red",
+      "shots": {
+      }
+    },
+     "d4a09b79-1cb7-46cd-9ab1-04709d31a06d": {
+      "first_name": "Sutter",
+      "last_name": "Carson",
+      "number": 21,
+      "position": "w",
+      "line": "blue",
+      "shots": {
+      }
+    },
+    "61409840-1b71-44de-bfb0-fcbb4f07512b": {
+      "first_name": "Tayz",
+      "last_name": "Rurak",
+      "number": 19,
+      "position": "c",
+      "line": "blue",
+      "shots": {
+      }
+    },
+    "2f6d7df3-04e5-4efd-89ae-a5fb08bab35e": {
+      "first_name": "Dylan",
+      "last_name": "Lancial",
+      "number": 17,
+      "position": "w",
+      "line": "blue",
+      "shots": {
+      }
+    },
+    "3fe5d1b7-6ce0-4c88-97c1-0e2c2ae6bf91": {
+      "first_name": "Sam",
+      "last_name": "Jewett",
+      "number": 6,
+      "position": "d",
+      "line": "d1",
+      "shots": {
+      }
+    },
+    "58f39d8a-00d9-41e2-9a56-64a1f21603cc": {
+      "first_name": "Solomon",
+      "last_name": "Wells",
+      "number": 7,
+      "position": "d",
+      "line": "d1",
+      "shots": {
+      }
+    },
+    "761ebc7d-c5ab-4914-9ca6-9a4404c58e11": {
+      "first_name": "Kevin",
+      "last_name": "Salewski",
+      "number": 18,
+      "position": "d",
+      "line": "d2",
+      "shots": {
+      }
+    },
+    "34aaf702-9a55-40ef-a3ad-1fb4e9b5ec3e": {
+      "first_name": "Kayla",
+      "last_name": "Hanson",
+      "number": 4,
+      "position": "d",
+      "line": "d2",
+      "shots": {
+      }
+    },
+    "7c699c73-2132-402f-86d1-df774ffdd05e": {
+      "first_name": "Mack",
+      "last_name": "Ashbaugh",
+      "number": 20,
+      "position": "d",
+      "line": "d3",
+      "shots": {
+      }
+    },
+    "4a590217-09d9-4abc-b1e8-f4933920f05f": {
+      "first_name": "Bryce",
+      "last_name": "Robin",
+      "number": 2,
+      "position": "d",
+      "line": "d3",
+      "shots": {
+      }
+    },
+    "b360e587-be73-445e-b7e7-1a7dcaf3f605": {
+      "first_name": "Nick",
+      "last_name": "Molitor",
+      "number": 16,
+      "position": "w",
+      "line": "white",
+      "shots": {
+        "3b07125f-e405-494c-af15-969326466475" : true
+      }
+    },
+    "d4a45e10-ae48-4d87-b0d0-b9353a920e08": {
+      "first_name": "Dylan",
+      "last_name": "Thomas",
+      "number": 31,
+      "position": "g",
+      "line": "g1",
+      "shots": {
+      }
+    },
+    "8f242547-a93e-4501-a450-bfedb08160e5": {
+      "first_name": "Tristan",
+      "last_name": "Scott",
+      "number": 1,
+      "position": "g",
+      "line": "g2",
+      "shots": {
+      }
+    }
+  },
+  "shots": {
+    "3b07125f-e405-494c-af15-969326466475": {
+      "type": 0,
+      "fore": true,
+      "stength": 0,
+      "goal": null,
+      "game": "74d14300-6c0c-4e05-90ae-d8420c99f6e3",
+      "players": {
+        "b360e587-be73-445e-b7e7-1a7dcaf3f605" : true,
+        "ab8b78cb-b890-4fb9-aa14-43a3b99a448b" : true
+      }
+    }
+  },
+  "games": {
+    "74d14300-6c0c-4e05-90ae-d8420c99f6e3": {
+      "date": "20160927T180000",
+      "opponent": "Seattle",
+      "shots": {
+        "3b07125f-e405-494c-af15-969326466475": true
+      }
+    }
+  },
+  "goals": {
+    "a6fac7b8-edc2-479d-b6a8-bc0ab7f412b9": {
+      "goal_player": "b360e587-be73-445e-b7e7-1a7dcaf3f605",
+      "assist1_player": "ab8b78cb-b890-4fb9-aa14-43a3b99a448b",
+      "assist2_player": null,
+      "shot" : "3b07125f-e405-494c-af15-969326466475",
+      "game" : "74d14300-6c0c-4e05-90ae-d8420c99f6e3"
+    }
+  }
+}
