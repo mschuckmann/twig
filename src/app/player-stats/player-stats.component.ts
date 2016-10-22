@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { PolymerElement } from '@vaadin/angular2-polymer';
-import {DataTableModule} from "angular2-datatable";
 import { Players, PlayersService, ShotType, Shots, ShotsService,
          PlayerShotsService, PlayerShots, PlayerStats, PlayerStatsService, Strength, ForeAgainst } from '../shared';
 import { IsSkaterPipe } from "../is-skater.pipe";

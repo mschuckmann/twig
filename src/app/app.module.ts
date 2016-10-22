@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { DataTableModule} from "angular2-datatable";
-import { MaterialModule } from '@angular/material';
 import { PolymerElement } from '@vaadin/angular2-polymer';
 import { PlayersService } from './shared';
 import { ShotsService } from './shared';
@@ -18,6 +16,7 @@ import { GoalDialogComponent } from './goal-dialog/goal-dialog.component';
 import { IsSkaterPipe } from './is-skater.pipe';
 import { PositionPipe } from './position.pipe';
 import { OnTheIcePipe } from './on-the-ice.pipe';
+import { FaceOffDialogComponent } from './face-off-dialog/face-off-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,14 +30,13 @@ import { OnTheIcePipe } from './on-the-ice.pipe';
     GoalDialogComponent,
     IsSkaterPipe,
     PositionPipe,
-    OnTheIcePipe
+    OnTheIcePipe,
+    FaceOffDialogComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    DataTableModule,
-    MaterialModule.forRoot()
+    HttpModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [PlayersService,

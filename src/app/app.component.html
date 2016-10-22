@@ -36,7 +36,7 @@
   <paper-header-panel main>
     <paper-toolbar>
       <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-      <paper-button raised>FO</paper-button>
+      <paper-button raised (click)="recordFaceOff()">FO</paper-button>
 
       <paper-button noink toggles raised class="red" [(active)]="onPP"> PP </paper-button>
       <paper-button noink toggles raised class="red" [(active)]="onSH"> SH </paper-button>
@@ -45,10 +45,13 @@
     </paper-toolbar>
     <!-- Main Content -->
     <div id="grid">
-      <button class="grid-element" [ngClass]="{'player-on':player.on_ice, 'player-off':!player.on_ice}" (click)="togglePlayerActive(player)"
-        *ngFor="let player of playerList">
-          {{player.first_name}}-{{player.number}}
-    </button>
+      <button class="grid-element"
+             (click)="togglePlayerActive(player.number)"
+             [style.background-color]="isPlayerActive(player.number) ? 'green' : 'red'"
+             *ngFor="let player of playerList">
+        <font size="10">{{player.number}}</font><br/>
+        {{player.first_name}}
+      </button>
     </div>
 
   <br/>
@@ -57,7 +60,7 @@
   </div>
 
 
-<div class="row">
+<!--<div class="row">
     <vaadin-grid>
       <table>
         <colgroup>
@@ -78,7 +81,7 @@
         </tbody>
       </table>
     </vaadin-grid>
-</div>
+</div>-->
 
 <!--
 <div class="row">
@@ -117,6 +120,7 @@
     (iron-overlay-closed)="_goalDialogClosed($event)"
     >-->
   <app-goal-dialog (confirmed)='onGoalConfirmed($event)'></app-goal-dialog>
+  <app-face-off-dialog (confirmed)='onFaceOffConfirmed($event)'></app-face-off-dialog>
 <!--</paper-dialog>-->
 
 <!--

@@ -1,0 +1,25 @@
+<paper-dialog
+    #paperDialog
+    modal="true"
+    (iron-overlay-closed)="onClose($event)"
+    >
+  <h2>Face Off</h2>
+  <!--<paper-dialog-scrollable>-->
+
+    <paper-dropdown-menu label="Player">
+      <paper-listbox class="dropdown-content" [(selected)]="playerID" attr-for-selected="playerId" >
+         <paper-item *ngFor="let player of playerList" playerId="{{player.number}}">#{{player.number}}-{{player.first_name}}</paper-item>
+      </paper-listbox>
+     </paper-dropdown-menu>
+
+      <paper-button raised toggles (click)="toggleWonLost()"
+             [style.background-color]="faceOffWon ? 'green' : 'red'">
+          {{btnText}}
+      </paper-button>
+
+  <!--</paper-dialog-scrollable>-->
+  <div class="buttons">
+    <paper-button dialog-dismiss>Cancel</paper-button>
+    <paper-button dialog-confirm autofocus>Accept</paper-button>
+  </div>
+</paper-dialog>
