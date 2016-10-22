@@ -55,6 +55,15 @@ export class PlayerStatsService {
       }
   }
 
+  updatePlayerFaceOffs(playerID : number, won: boolean ) {
+    for(let playerStats of this.playerStatsList) {
+      if(playerStats.player.number == playerID) {
+        playerStats.updateFaceOffs(won);
+        break;
+      }
+    }
+  }
+
   getPlayerStats(): PlayerStats[] {
     console.log( "updating playerStats" );
 //    //Update all the stats.

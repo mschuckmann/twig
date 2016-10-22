@@ -11,17 +11,20 @@ import { IsSkaterPipe } from "../is-skater.pipe";
 })
 export class PlayerStatsComponent implements OnInit, AfterViewInit {
   playerstatsList: PlayerStats[] = [];
+  shotsList: Shots[] = [];
 
   public ShotType = ShotType;
   public ForeAgainst = ForeAgainst;
   public Strength = Strength;
 
   constructor(
-      private _playerstatsservice: PlayerStatsService
+      private _playerstatsservice: PlayerStatsService,
+      private _shotsservice: ShotsService
       ) {}
 
   ngOnInit() {
     this.playerstatsList = this._playerstatsservice.getPlayerStats();
+    this._shotsservice.getShots().then(shots => this.shotsList = shots);
 
     this._playerstatsservice.playerShotsUpdated.subscribe( (stats) => {
     });

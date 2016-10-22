@@ -11,6 +11,8 @@ export class PlayerStats {
   _shotsSH : number[][] = [[0,0],[0,0],[0,0],[0,0]];
   _goals : number[] = [0,0,0];
   _assists : number[] = [0,0,0];
+  _faceOffWon : number = 0;
+  _faceOffLost: number = 0;
 
   updateShots(type : ShotType, fore : ForeAgainst, strength : Strength, goal : boolean, assist : boolean) {
     switch(strength) {
@@ -28,6 +30,14 @@ export class PlayerStats {
       ++this._goals[strength];
     if(assist)
       ++this._assists[strength];
+  }
+
+  updateFaceOffs(won: boolean) {
+    if(won) {
+      ++this._faceOffWon;
+    } else {
+      ++this._faceOffLost;
+    }
   }
 
   shotsFore(): number {
@@ -107,6 +117,14 @@ export class PlayerStats {
 
   assists() : number {
     return this._assists.reduce(function(a,b) { return a+b;});
+  }
+
+  faceOffsWon() : number {
+    return this._faceOffWon;
+  }
+
+  faceOffsLost() : number {
+    return this._faceOffLost;
   }
 
 }

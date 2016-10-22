@@ -8,6 +8,7 @@ import { ShotsService } from './shared';
 import { PlayerShotsService } from './shared';
 import { PlayerStatsService } from './shared';
 import { WindowRefService } from './shared';
+import { FaceOffsService } from './shared';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
@@ -43,7 +44,8 @@ import { FaceOffDialogComponent } from './face-off-dialog/face-off-dialog.compon
               ShotsService,
               PlayerShotsService,
               PlayerStatsService,
-              WindowRefService ],
+              WindowRefService,
+              FaceOffsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

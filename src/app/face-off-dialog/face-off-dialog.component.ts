@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
-import { Players, PlayersService, ShotType, Shots, ShotsService, PlayerShotsService, PlayerShots, PlayerStats, PlayerStatsService, ForeAgainst } from '../shared';
+import { Players, PlayersService, ShotType, Shots, ShotsService,
+         PlayerShotsService, PlayerShots, PlayerStats, PlayerStatsService,
+         ForeAgainst, FaceOffsService, FaceOffs } from '../shared';
 
 @Component({
   selector: 'app-face-off-dialog',
@@ -10,7 +12,8 @@ export class FaceOffDialogComponent implements OnInit {
   playerList: Players[] = [];
 
   constructor(
-    private _playerservice: PlayersService) { }
+    private _playerservice: PlayersService,
+    private _playerStats: PlayerStatsService) { }
 
   @ViewChild('paperDialog') paperDialog : any;
 
@@ -51,8 +54,7 @@ export class FaceOffDialogComponent implements OnInit {
   onClose(event : any) {
     if( event.detail.confirmed ) {
       console.log("faceOff confirmed: ");
-
-      console.log("Player: " + this.playerID );
+      this._playerStats.updatePlayerFaceOffs(this.playerID, this.faceOffWon);
       this.confirmed.emit([this.playerID,this.faceOffWon]);
     }
     else {

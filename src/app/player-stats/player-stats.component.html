@@ -1,3 +1,5 @@
+<hr/>
+<h3>Player Stats</h3>
 
 <!--<vaadin-grid #playerStats >-->
   <table>
@@ -32,9 +34,11 @@
       <col>
       <col>
 
+      <col class="fore">
       <col>
+      <col class="fore">
       <col>
-      <col>
+      <col class="fore">
     </colgroup>
     <thead>
       <tr>
@@ -87,10 +91,14 @@
         <th>Corsi</th>
         <th>Goals Scored</th>
         <th>Assists</th>
+        <th>FO Won</th>
+        <th>FO Lost</th>
+
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let stats of playerstatsList | position:'wcd' ">
+      <!--<tr *ngFor="let stats of playerstatsList | position:'wcd' ">-->
+      <tr *ngFor="let stats of playerstatsList">
         <td align="left">{{stats.player.number}}</td>
         <td align="left">{{stats.player.last_name}}</td>
         <td align="center">{{stats.shotStat(ShotType.SAVE,  ForeAgainst.FORE,    Strength.EVEN)}}</td>
@@ -123,8 +131,40 @@
         <td align="center">{{stats.corsi()}}</td>
         <td align="center">{{stats.goalsScored()}}</td>
         <td align="center">{{stats.assists()}}</td>
+        <td align="center">{{stats.faceOffsWon()}}</td>
+        <td align="center">{{stats.faceOffsLost()}}</td>
       </tr>
     </tbody>
   </table>
+
+<hr/>
+<h3>Goals</h3>
+
+  <table>
+    <colgroup>
+      <col>
+      <col>
+      <col>
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th align="center">Goal</th>
+        <th align="center">Scored</th>
+        <th align="center">Assist 1</th>
+        <th align="center">Assist 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let shot of shotsList  ">
+        <td align="left">{{shot.id}}</td>
+        <td align="center">{{shot.shooterPlayerId}}</td>
+        <td align="center">{{shot.assist1PlayerId}}</td>
+        <td align="center">{{shot.assist2PlayerId}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
 <!--</vaadin-grid>-->
 

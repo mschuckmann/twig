@@ -27,9 +27,9 @@ export class GoalDialogComponent implements OnInit{
   }
 
   open() {
-    this.goalScorer = "";
-    this.assist1 = "";
-    this.assist2 = "";
+    this.goalScorer = null;
+    this.assist1 = null;
+    this.assist2 = null;
     console.log("open dialog: " + this.paperDialog);
     var dlg = this.paperDialog.nativeElement;
     dlg.open();
@@ -46,9 +46,12 @@ export class GoalDialogComponent implements OnInit{
 
       console.log("Goal Scorer: " + this.goalScorer );
 
-      aShot.shooterPlayerId = Number(this.goalScorer);
-      aShot.assist1PlayerId = Number(this.assist1);
-      aShot.assist2PlayerId = Number(this.assist2);
+      if( this.goalScorer != null)
+        aShot.shooterPlayerId = Number(this.goalScorer);
+      if( this.assist1 != null)
+        aShot.assist1PlayerId = Number(this.assist1);
+      if( this.assist2 != null)
+        aShot.assist2PlayerId = Number(this.assist2);
       this.confirmed.emit(aShot);
     }
     else {
