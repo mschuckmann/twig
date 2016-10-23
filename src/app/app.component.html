@@ -119,8 +119,8 @@
     modal="true"
     (iron-overlay-closed)="_goalDialogClosed($event)"
     >-->
-  <app-goal-dialog (confirmed)='onGoalConfirmed($event)'></app-goal-dialog>
-  <app-face-off-dialog (confirmed)='onFaceOffConfirmed($event)'></app-face-off-dialog>
+  <app-goal-dialog [active-players]='playersActive' (confirmed)='onGoalConfirmed($event)'></app-goal-dialog>
+  <app-face-off-dialog [active-players]='playersActive' (confirmed)='onFaceOffConfirmed($event)'></app-face-off-dialog>
 <!--</paper-dialog>-->
 
 <!--

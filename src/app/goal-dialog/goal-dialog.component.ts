@@ -1,6 +1,7 @@
-import { Component, ViewChild, OnInit, AfterViewInit, EventEmitter, Output, ElementRef } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit, EventEmitter, Output, Input, ElementRef } from '@angular/core';
 import { Players, PlayersService, ShotType, Shots, ShotsService, PlayerShotsService, PlayerShots, PlayerStats, PlayerStatsService, ForeAgainst } from '../shared';
 import { PolymerElement } from '@vaadin/angular2-polymer';
+import { ActivePlayerPipe } from '../active-player.pipe';
 
 @Component({
   selector: 'app-goal-dialog',
@@ -8,7 +9,9 @@ import { PolymerElement } from '@vaadin/angular2-polymer';
   styleUrls: ['./goal-dialog.component.css'],
 })
 export class GoalDialogComponent implements OnInit{
-    playerList: Players[] = [];
+  playerList: Players[] = [];
+
+  @Input("active-players") activePlayers: number[];
 
   @ViewChild('paperDialog') paperDialog : any;
 

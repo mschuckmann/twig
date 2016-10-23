@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, Input, EventEmitter } from '@angular/core';
 import { Players, PlayersService, ShotType, Shots, ShotsService,
          PlayerShotsService, PlayerShots, PlayerStats, PlayerStatsService,
          ForeAgainst, FaceOffsService, FaceOffs } from '../shared';
@@ -10,6 +10,8 @@ import { Players, PlayersService, ShotType, Shots, ShotsService,
 })
 export class FaceOffDialogComponent implements OnInit {
   playerList: Players[] = [];
+
+  @Input("active-players") activePlayers: number[];
 
   constructor(
     private _playerservice: PlayersService,

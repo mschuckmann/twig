@@ -8,19 +8,19 @@
 
     <paper-dropdown-menu label="Goal">
       <paper-listbox class="dropdown-content" [(selected)]="goalScorer" attr-for-selected="playerId" >
-         <paper-item *ngFor="let player of playerList" playerId="{{player.number}}">#{{player.number}}-{{player.first_name}}</paper-item>
+         <paper-item *ngFor="let player of playerList | activePlayer: activePlayers" playerId="{{player.number}}">#{{player.number}}-{{player.first_name}}</paper-item>
       </paper-listbox>
      </paper-dropdown-menu>
 
     <paper-dropdown-menu label="1st Assist">
       <paper-listbox class="dropdown-content" [(selected)]="assist1" attr-for-selected="playerId">
-         <paper-item *ngFor="let player of playerList" playerId="{{player.number}}">#{{player.number}}-{{player.first_name}}</paper-item>
+         <paper-item *ngFor="let player of playerList | activePlayer: activePlayers" playerId="{{player.number}}">#{{player.number}}-{{player.first_name}}</paper-item>
       </paper-listbox>
     </paper-dropdown-menu>
 
     <paper-dropdown-menu label="2st Assist">
       <paper-listbox class="dropdown-content" [(selected)]="assist2" attr-for-selected="playerId">
-         <paper-item *ngFor="let player of playerList" playerId="{{player.number}}">#{{player.number}}-{{player.first_name}}</paper-item>
+         <paper-item *ngFor="let player of playerList| activePlayer: activePlayers" playerId="{{player.number}}">#{{player.number}}-{{player.first_name}}</paper-item>
       </paper-listbox>
     </paper-dropdown-menu>
   <!--</paper-dialog-scrollable>-->

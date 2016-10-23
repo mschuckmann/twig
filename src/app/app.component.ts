@@ -7,6 +7,7 @@ import { Players, PlayersService, ShotType, Shots, ShotsService,
 import { GoalDialogComponent } from './goal-dialog/goal-dialog.component';
 import { FaceOffDialogComponent } from './face-off-dialog/face-off-dialog.component';
 import { PlayerStatsComponent } from './player-stats/player-stats.component';
+import { ActivePlayerPipe } from './active-player.pipe';
 
 @Component({
   selector: 'app-root',
@@ -25,12 +26,6 @@ export class AppComponent implements OnInit {
 
   @ViewChild(FaceOffDialogComponent)
   faceOffDialog: FaceOffDialogComponent;
-
-  // @ViewChild(PlayerStatsComponent)
-  // playerStats: PlayerStatsComponent;
-  //@ViewChild()  playerStats;
-  //@ContentChild(any) playerStats;
-
 
   onPP : any;
   onSH : any;
@@ -188,12 +183,11 @@ export class AppComponent implements OnInit {
       body += s.faceOffsLost() + "%0A";
     }
 
-    body += "%0A%0A%0A";
+    body += "%0A%0AShots%0A";
 
     body += "shot%2Cgoal%2Cassist1%2Cassist2%2CStrength%2CFore%0A";
 
     for( let s of this.getShots() ) {
-      if( s.type == ShotType.GOAL) {
         body += s.id + "%2C";
         body += s.shooterPlayerId + "%2C";
         body += s.assist1PlayerId + "%2C";
@@ -213,7 +207,16 @@ export class AppComponent implements OnInit {
           body +=  "F%0A";
         else
           body += "A%0A";
-      }
+    }
+
+    body += "%0A%0APlayerShots%0A";
+
+    body += "shot%2CPlayer%0A";
+
+    for( let ps of this.getPlayerShots() ) {
+        body += ps.shotId + "%2C";
+        body += ps.playerId;
+        body += "A%0A";
     }
 
     this.winRef.nativeWindow.open('mailto:matt@schuckmannacres.com?subject=Game%20Stats&body=' + body);

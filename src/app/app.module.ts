@@ -18,6 +18,7 @@ import { IsSkaterPipe } from './is-skater.pipe';
 import { PositionPipe } from './position.pipe';
 import { OnTheIcePipe } from './on-the-ice.pipe';
 import { FaceOffDialogComponent } from './face-off-dialog/face-off-dialog.component';
+import { ActivePlayerPipe } from './active-player.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FaceOffDialogComponent } from './face-off-dialog/face-off-dialog.compon
     IsSkaterPipe,
     PositionPipe,
     OnTheIcePipe,
-    FaceOffDialogComponent
+    FaceOffDialogComponent,
+    ActivePlayerPipe
   ],
   imports: [
     BrowserModule,
