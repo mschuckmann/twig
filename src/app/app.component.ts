@@ -139,7 +139,7 @@ export class AppComponent implements OnInit {
     body += "sef%2Cmef%2Cbef%2Cgef%2C" + "sea%2Cmea%2Cbea%2Cgea%2C";
     body += "sppf%2Cmppf%2Cbppf%2Cgppf%2C" + "sppa%2Cmppa%2Cbppa%2Cgppa%2C";
     body += "sshf%2Cmshf%2Cbshf%2Cgshf%2C" + "ssha%2Cmsha%2Cbsha%2Cgsha%2C";
-    body += "corsi%2CGoals%2CAssists%2CFOW%2CFOL%0A";
+    body += "Goals%2CAssists%2CFOW%2CFOL%2Ccorsi%0A";
     for(let s of this._playerstatsservce.getPlayerStats()) {
       body += String(s.player.number) + "%2C";
       body += s.player.last_name + "%2C";
@@ -176,11 +176,11 @@ export class AppComponent implements OnInit {
       body += s.shotStat(ShotType.BLOCK, ForeAgainst.AGAINST, Strength.SHORT_HANDED) + "%2C";
       body += s.shotStat(ShotType.GOAL, ForeAgainst.AGAINST, Strength.SHORT_HANDED) + "%2C";
 
-      body += s.corsi() + "%2C";
       body += s.goalsScored() + "%2C";
       body += s.assists() + "%2C";
       body += s.faceOffsWon() + "%2C";
-      body += s.faceOffsLost() + "%0A";
+      body += s.faceOffsLost() + "%2C";
+      body += s.corsi() + "%0A";
     }
 
     body += "%0A%0AShots%0A";
