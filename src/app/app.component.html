@@ -1,12 +1,12 @@
 
-<paper-drawer-panel drawer-width="100px">
+<paper-drawer-panel drawer-width="200px">
   <paper-header-panel drawer>
     <div class="row">
     <paper-toolbar>
       <div>Fore</div>
     </paper-toolbar>
     <div>
-      <paper-button class="row" raised (click)="recordMiss(ForeAgainst.FORE)" >Miss</paper-button>
+      <paper-button class="shot-button" class="row" raised (click)="recordMiss(ForeAgainst.FORE)" >Miss</paper-button>
       <paper-button class="row" raised (click)="recordBlock(ForeAgainst.FORE)">Block</paper-button>
       <paper-button class="row" raised (click)="recordSave(ForeAgainst.FORE)" >Save</paper-button>
       <paper-button class="row" raised (click)="recordGoal(ForeAgainst.FORE)" >Goal</paper-button>
@@ -59,104 +59,8 @@
     <app-player-stats #playerStats></app-player-stats>
   </div>
 
-
-<!--<div class="row">
-    <vaadin-grid>
-      <table>
-        <colgroup>
-          <col>
-          <col>
-        </colgroup>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let shot of getShots()">
-            <td>{{shot.id}}</td>
-            <td>{{shot.type}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </vaadin-grid>
-</div>-->
-
-<!--
-<div class="row">
-    <vaadin-grid>
-      <table>
-        <colgroup>
-          <col>
-          <col>
-        </colgroup>
-        <thead>
-          <tr>
-            <th>playerID</th>
-            <th>shotID</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let ps of getPlayerShots()">
-            <td>{{ps.playerId}}</td>
-            <td>{{ps.shotId}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </vaadin-grid>
-</div>
--->
-
-
   </paper-header-panel>
 </paper-drawer-panel>
 
-<!--<paper-dialog
-    id="goalDialog"
-    no-overlap horizontal-align="left"
-    vertical-align="top"
-    modal="true"
-    (iron-overlay-closed)="_goalDialogClosed($event)"
-    >-->
-  <app-goal-dialog [active-players]='playersActive' (confirmed)='onGoalConfirmed($event)'></app-goal-dialog>
-  <app-face-off-dialog [active-players]='playersActive' (confirmed)='onFaceOffConfirmed($event)'></app-face-off-dialog>
-<!--</paper-dialog>-->
-
-<!--
-  <div class="row">
-    <vaadin-grid [items]="playerList">
-      <table>
-        <colgroup>
-          <col name="last_name">
-          <col name="number">
-          <col name="position" hidable>
-          <col name="line" hidable>
-        </colgroup>
-      </table>
-    </vaadin-grid>
-
-    <vaadin-grid>
-      <table>
-        <colgroup>
-          <col>
-          <col>
-        </colgroup>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let shot of getShots()">
-            <td>{{shot.id}}</td>
-            <td>{{shot.type}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </vaadin-grid>
-  </div>
--->
-
-<!-- </paper-header-panel>-->
+<app-goal-dialog [active-players]='playersActive' (confirmed)='onGoalConfirmed($event)'></app-goal-dialog>
+<app-face-off-dialog [active-players]='playersActive' (confirmed)='onFaceOffConfirmed($event)'></app-face-off-dialog>
