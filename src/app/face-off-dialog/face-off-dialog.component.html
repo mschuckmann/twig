@@ -12,14 +12,10 @@
       </paper-listbox>
      </paper-dropdown-menu>
 
-      <paper-button raised toggles (click)="toggleWonLost()"
-             [style.background-color]="faceOffWon ? 'green' : 'red'">
-          {{btnText}}
-      </paper-button>
-
   <!--</paper-dialog-scrollable>-->
   <div class="buttons">
     <paper-button dialog-dismiss>Cancel</paper-button>
-    <paper-button dialog-confirm autofocus>Accept</paper-button>
+    <paper-button dialog-confirm (click)="faceOffWon()" autofocus>Won</paper-button>
+    <paper-button dialog-confirm (click)="faceOffLost()">Lost</paper-button>
   </div>
 </paper-dialog>
