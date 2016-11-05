@@ -135,75 +135,72 @@ export class AppComponent implements OnInit {
   }
 
   eMailData() {
-
-    let DELIM = "%2C";
-    let body = ["#","name",
-                "sef", "mef", "bef", "gef"  ,  "sea", "mea", "bea", "gea",
-                "sppf","mppf","bppf","gppf" ,  "sppa","mppa","bppa","gppa",
-                "sshf","mshf","bshf","gshf" ,  "ssha","msha","bsha","gsha",
-                "Goals","Assists","FOW","FOL","corsi%0A"].join(DELIM);
-
+    let body = "#%2Cname%2C";
+    body += "sef%2Cmef%2Cbef%2Cgef%2C" + "sea%2Cmea%2Cbea%2Cgea%2C";
+    body += "sppf%2Cmppf%2Cbppf%2Cgppf%2C" + "sppa%2Cmppa%2Cbppa%2Cgppa%2C";
+    body += "sshf%2Cmshf%2Cbshf%2Cgshf%2C" + "ssha%2Cmsha%2Cbsha%2Cgsha%2C";
+    body += "Goals%2CAssists%2CFOW%2CFOL%2Ccorsi%0A";
     for(let s of this._playerstatsservce.getPlayerStats()) {
-      body += [String(s.player.number), s.player.last_name,
+      body += String(s.player.number) + "%2C";
+      body += s.player.last_name + "%2C";
       //Shots FORE/EVEN
-              s.shotStat(ShotType.SAVE, ForeAgainst.FORE, Strength.EVEN),
-              s.shotStat(ShotType.MISS, ForeAgainst.FORE, Strength.EVEN),
-              s.shotStat(ShotType.BLOCK, ForeAgainst.FORE, Strength.EVEN),
-              s.shotStat(ShotType.GOAL, ForeAgainst.FORE, Strength.EVEN),
+      body += s.shotStat(ShotType.SAVE, ForeAgainst.FORE, Strength.EVEN) + "%2C";
+      body += s.shotStat(ShotType.MISS, ForeAgainst.FORE, Strength.EVEN) + "%2C";
+      body += s.shotStat(ShotType.BLOCK, ForeAgainst.FORE, Strength.EVEN) + "%2C";
+      body += s.shotStat(ShotType.GOAL, ForeAgainst.FORE, Strength.EVEN) + "%2C";
       //Shots AGAINST/EVEN
-              s.shotStat(ShotType.SAVE, ForeAgainst.AGAINST, Strength.EVEN),
-              s.shotStat(ShotType.MISS, ForeAgainst.AGAINST, Strength.EVEN),
-              s.shotStat(ShotType.BLOCK, ForeAgainst.AGAINST, Strength.EVEN),
-              s.shotStat(ShotType.GOAL, ForeAgainst.AGAINST, Strength.EVEN),
+      body += s.shotStat(ShotType.SAVE, ForeAgainst.AGAINST, Strength.EVEN) + "%2C";
+      body += s.shotStat(ShotType.MISS, ForeAgainst.AGAINST, Strength.EVEN) + "%2C";
+      body += s.shotStat(ShotType.BLOCK, ForeAgainst.AGAINST, Strength.EVEN) + "%2C";
+      body += s.shotStat(ShotType.GOAL, ForeAgainst.AGAINST, Strength.EVEN) + "%2C";
 
       //Shots FORE/PP
-              s.shotStat(ShotType.SAVE, ForeAgainst.FORE, Strength.POWER_PLAY) ,
-              s.shotStat(ShotType.MISS, ForeAgainst.FORE, Strength.POWER_PLAY) ,
-              s.shotStat(ShotType.BLOCK, ForeAgainst.FORE, Strength.POWER_PLAY),
-              s.shotStat(ShotType.GOAL, ForeAgainst.FORE, Strength.POWER_PLAY) ,
+      body += s.shotStat(ShotType.SAVE, ForeAgainst.FORE, Strength.POWER_PLAY) + "%2C";
+      body += s.shotStat(ShotType.MISS, ForeAgainst.FORE, Strength.POWER_PLAY) + "%2C";
+      body += s.shotStat(ShotType.BLOCK, ForeAgainst.FORE, Strength.POWER_PLAY) + "%2C";
+      body += s.shotStat(ShotType.GOAL, ForeAgainst.FORE, Strength.POWER_PLAY) + "%2C";
       //Shots AGAINST/PP
-              s.shotStat(ShotType.SAVE, ForeAgainst.AGAINST, Strength.POWER_PLAY) ,
-              s.shotStat(ShotType.MISS, ForeAgainst.AGAINST, Strength.POWER_PLAY) ,
-              s.shotStat(ShotType.BLOCK, ForeAgainst.AGAINST, Strength.POWER_PLAY),
-              s.shotStat(ShotType.GOAL, ForeAgainst.AGAINST, Strength.POWER_PLAY) ,
+      body += s.shotStat(ShotType.SAVE, ForeAgainst.AGAINST, Strength.POWER_PLAY) + "%2C";
+      body += s.shotStat(ShotType.MISS, ForeAgainst.AGAINST, Strength.POWER_PLAY) + "%2C";
+      body += s.shotStat(ShotType.BLOCK, ForeAgainst.AGAINST, Strength.POWER_PLAY) + "%2C";
+      body += s.shotStat(ShotType.GOAL, ForeAgainst.AGAINST, Strength.POWER_PLAY) + "%2C";
 
       //Shots FORE/SH
-              s.shotStat(ShotType.SAVE, ForeAgainst.FORE, Strength.SHORT_HANDED),
-              s.shotStat(ShotType.MISS, ForeAgainst.FORE, Strength.SHORT_HANDED),
-              s.shotStat(ShotType.BLOCK, ForeAgainst.FORE, Strength.SHORT_HANDED),
-              s.shotStat(ShotType.GOAL, ForeAgainst.FORE, Strength.SHORT_HANDED),
+      body += s.shotStat(ShotType.SAVE, ForeAgainst.FORE, Strength.SHORT_HANDED) + "%2C";
+      body += s.shotStat(ShotType.MISS, ForeAgainst.FORE, Strength.SHORT_HANDED) + "%2C";
+      body += s.shotStat(ShotType.BLOCK, ForeAgainst.FORE, Strength.SHORT_HANDED) + "%2C";
+      body += s.shotStat(ShotType.GOAL, ForeAgainst.FORE, Strength.SHORT_HANDED) + "%2C";
       //Shots AGAINST/SH
-              s.shotStat(ShotType.SAVE, ForeAgainst.AGAINST, Strength.SHORT_HANDED) ,
-              s.shotStat(ShotType.MISS, ForeAgainst.AGAINST, Strength.SHORT_HANDED) ,
-              s.shotStat(ShotType.BLOCK, ForeAgainst.AGAINST, Strength.SHORT_HANDED),
-              s.shotStat(ShotType.GOAL, ForeAgainst.AGAINST, Strength.SHORT_HANDED) ,
+      body += s.shotStat(ShotType.SAVE, ForeAgainst.AGAINST, Strength.SHORT_HANDED) + "%2C";
+      body += s.shotStat(ShotType.MISS, ForeAgainst.AGAINST, Strength.SHORT_HANDED) + "%2C";
+      body += s.shotStat(ShotType.BLOCK, ForeAgainst.AGAINST, Strength.SHORT_HANDED) + "%2C";
+      body += s.shotStat(ShotType.GOAL, ForeAgainst.AGAINST, Strength.SHORT_HANDED) + "%2C";
 
-              s.goalsScored(),
-              s.assists(),
-              s.faceOffsWon(),
-              s.faceOffsLost(),
-              s.corsi() ].join(DELIM);
+      body += s.goalsScored() + "%2C";
+      body += s.assists() + "%2C";
+      body += s.faceOffsWon() + "%2C";
+      body += s.faceOffsLost() + "%2C";
+      body += s.corsi() + "%0A";
     }
 
     body += "%0A%0AShots%0A";
 
-    body += ["shot","type","goal","assist1","assist2","Strength","Fore%0A"].join(DELIM);
+    body += "shot%2Cgoal%2Cassist1%2Cassist2%2CStrength%2CFore%0A";
 
     for( let s of this.getShots() ) {
-        [s.id,
-         s.type,
-         s.shooterPlayerId,
-         s.assist1PlayerId,
-         s.assist2PlayerId].join(DELIM);
+        body += s.id + "%2C";
+        body += s.shooterPlayerId + "%2C";
+        body += s.assist1PlayerId + "%2C";
+        body += s.assist2PlayerId + "%2C";
         switch(s.strength) {
           case Strength.EVEN:
-            body += "E"+DELIM;
+            body += "E%2C";
             break;
           case Strength.POWER_PLAY:
-            body += "PP"+DELIM;
+            body += "PP%2C";
             break;
           case Strength.SHORT_HANDED:
-            body += "Sh"+DELIM;
+            body += "Sh%2C";
             break;
         }
         if(s.fore == ForeAgainst.FORE)
@@ -214,12 +211,12 @@ export class AppComponent implements OnInit {
 
     body += "%0A%0APlayerShots%0A";
 
-    body += ["shot","Player%0A"].join(DELIM);
+    body += "shot%2CPlayer%0A";
 
     for( let ps of this.getPlayerShots() ) {
-        body += ps.shotId + DELIM;
+        body += ps.shotId + "%2C";
         body += ps.playerId;
-        body += "%0A";
+        body += "A%0A";
     }
 
     this.winRef.nativeWindow.open('mailto:matt@schuckmannacres.com?subject=Game%20Stats&body=' + body);
