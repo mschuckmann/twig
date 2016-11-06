@@ -6,11 +6,9 @@
   <h2>Face Off</h2>
   <!--<paper-dialog-scrollable>-->
 
-    <paper-dropdown-menu label="Player">
       <paper-listbox class="dropdown-content" [(selected)]="playerID" attr-for-selected="playerId" >
          <paper-item *ngFor="let player of playerList| activePlayer: activePlayers" playerId="{{player.number}}">#{{player.number}}-{{player.first_name}}</paper-item>
       </paper-listbox>
-     </paper-dropdown-menu>
 
   <!--</paper-dialog-scrollable>-->
   <div class="buttons">
