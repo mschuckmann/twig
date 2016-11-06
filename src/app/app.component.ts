@@ -3,7 +3,8 @@ import { Component, ElementRef, OnInit, ViewChild, ContentChild, ViewChildren } 
 import { PolymerElement } from '@vaadin/angular2-polymer';
 import { Players, PlayersService, ShotType, Shots, ShotsService,
          PlayerShotsService, PlayerShots, ForeAgainst, Strength,
-         PlayerStatsService,  PlayerStats, WindowRefService } from './shared';
+         PlayerStatsService,  PlayerStats, WindowRefService,
+         FaceOffs, FaceOffsService } from './shared';
 import { GoalDialogComponent } from './goal-dialog/goal-dialog.component';
 import { FaceOffDialogComponent } from './face-off-dialog/face-off-dialog.component';
 import { PlayerStatsComponent } from './player-stats/player-stats.component';
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
     private _shotservice: ShotsService,
     private _playershotservice: PlayerShotsService,
     private _playerstatsservce: PlayerStatsService,
+    private _faceOffsService: FaceOffsService,
     private winRef : WindowRefService,
      ) {}
 
@@ -64,6 +66,10 @@ export class AppComponent implements OnInit {
 
   getPlayerShots() : PlayerShots[] {
     return this._playershotservice.player_shots;
+  }
+
+  getFaceOffs() : FaceOffs[] {
+    return this._faceOffsService.face_offs;
   }
 
   recordSave(fore: ForeAgainst) {
@@ -185,7 +191,7 @@ export class AppComponent implements OnInit {
 
     body += "%0A%0AShots%0A";
 
-    body += "shot%2Cgoal%2Cassist1%2Cassist2%2CStrength%2CFore%0A";
+    body += "shotID%2Cgoal%2Cassist1%2Cassist2%2CStrength%2CFore%0A";
 
     for( let s of this.getShots() ) {
         body += s.id + "%2C";
@@ -216,8 +222,21 @@ export class AppComponent implements OnInit {
     for( let ps of this.getPlayerShots() ) {
         body += ps.shotId + "%2C";
         body += ps.playerId;
-        body += "A%0A";
+        body += "%0A";
     }
+
+
+    body += "%0A%0AFace Offs%0A";
+
+    body += "Player%2CTimeStamp%2CWon%0A";
+
+    for( let fo of this.getFaceOffs() ) {
+        body += fo.playerId + "%2C";
+        body += fo.timeStamp + "%2C";
+        body += fo.won;
+        body += "%0A";
+    }
+
 
     this.winRef.nativeWindow.open('mailto:matt@schuckmannacres.com?subject=Game%20Stats&body=' + body);
   }

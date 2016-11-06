@@ -31,7 +31,9 @@ export class Shots {
 
   static newShot(): Shots {
     var s = new Shots();
-    s.id = Guid.newGuid();
+    //s.id = Guid.newGuid();
+    s.id = String(Date.now());
+    //s.timeStamp = Date.now();
     return s;
   }
 

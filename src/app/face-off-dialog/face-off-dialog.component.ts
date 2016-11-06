@@ -15,7 +15,8 @@ export class FaceOffDialogComponent implements OnInit {
 
   constructor(
     private _playerservice: PlayersService,
-    private _playerStats: PlayerStatsService) { }
+    private _playerStats: PlayerStatsService,
+    private _faceOffService: FaceOffsService) { }
 
   @ViewChild('paperDialog') paperDialog : any;
 
@@ -49,6 +50,7 @@ export class FaceOffDialogComponent implements OnInit {
     if( event.detail.confirmed ) {
       console.log("faceOff confirmed: ");
       this._playerStats.updatePlayerFaceOffs(this.playerID, this._faceOffWon);
+      this._faceOffService.addFaceOff(this._faceOffWon, this.playerID);
       this.confirmed.emit([this.playerID,this._faceOffWon]);
     }
     else {
